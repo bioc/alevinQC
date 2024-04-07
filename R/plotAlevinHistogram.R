@@ -56,7 +56,7 @@ plotAlevinHistogram <- function(cbTable, plotVar = "dedupRate",
     ## Filter to only keep the quantified barcodes
     cbTable <- cbTable %>% dplyr::filter(.data[[firstSelColName]]) %>%
         dplyr::filter(!is.na(.data[[plotVar]]))
-    nbins <- min(nrow(cbTable)/10, 100)
+    nbins <- round(min(nrow(cbTable)/10, 100))
     ggplot2::ggplot(
         cbTable,
         ggplot2::aes(x = .data[[plotVar]],
